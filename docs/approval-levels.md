@@ -27,6 +27,9 @@ or grant another bot access to a different workspace.
 
 ### Full access in a self-hosted browser
 
+In the permission menu, this mode appears as **Dangerously approve all**; the
+composer chip reads **Approve all**. It uses the existing Full access behavior.
+
 Set `OMB_ALLOW_BROWSER_FULL_ACCESS=1` in the standalone server's environment
 and restart it. Docker Compose forwards this setting from its environment or
 `.env` file. The default is `0`; packaged desktop hosts and managed portal

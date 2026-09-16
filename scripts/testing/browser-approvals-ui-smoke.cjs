@@ -46,7 +46,7 @@ app.whenReady().then(async () => {
       await openMenu();
       await until(`Boolean(document.querySelector('[role="menuitemradio"]'))`, 'permission menu');
       assert.equal(await evaluate(`document.querySelector('[role="menu"]').innerText.includes('Custom (config.toml)')`), false);
-      await evaluate(`Array.from(document.querySelectorAll('[role="menuitemradio"]')).find(el => el.textContent.startsWith('Full access')).click()`);
+      await evaluate(`Array.from(document.querySelectorAll('[role="menuitemradio"]')).find(el => el.textContent.startsWith('Dangerously approve all')).click()`);
       await until(`Boolean(document.querySelector('[role="alertdialog"]'))`, 'confirmation');
     };
     const readBot = async () => (await api('/api/bots', undefined, paired.cookie)).body.bots[0];
@@ -62,7 +62,7 @@ app.whenReady().then(async () => {
     await until(`fetch('/api/bots').then(r=>r.json()).then(x=>x.bots[0].tasks[0].approvalMode==='full')`, 'thread full saved');
     assert.equal((await readBot()).approvalMode ?? 'ask', 'ask');
     await win.loadURL(url);
-    await until(`Boolean(document.querySelector('button[aria-label="Full access for Verification fixture"]'))`, 'full survives reload');
+    await until(`Boolean(document.querySelector('button[aria-label="Dangerously approve all for Verification fixture"]'))`, 'full survives reload');
     await evaluate(`(() => { const input=document.querySelector('textarea'); Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set.call(input,'Complete this isolated browser test'); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
     await until(`Boolean(document.querySelector('button[aria-label="Send message"]:not(:disabled)'))`, 'send enabled');
     await evaluate(`document.querySelector('button[aria-label="Send message"]').click()`);

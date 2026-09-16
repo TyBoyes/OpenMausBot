@@ -44,8 +44,8 @@ describe("approval mode selector", () => {
       },
       {
         mode: "full",
-        label: "Full access",
-        description: "Full computer access (elevated risk)",
+        label: "Dangerously approve all",
+        description: "Skips permission prompts for tool actions (full access)",
       },
       {
         mode: "custom",
