@@ -285,7 +285,7 @@ export function ModelEngineRail({ instances, selectedInstance, claudeInstance, o
         title={`${label} · ${engineStatus(target)}`}
         className={cn("relative flex size-9 items-center justify-center rounded-lg", selected ? "bg-control ring-1 ring-hairline/50" : "hover:bg-control/60")}
       >
-        <InstanceProviderMark instance={instance} size={18} />
+        <InstanceProviderMark instance={target} size={18} />
         {attention && <span className="absolute bottom-0.5 right-0.5 size-1.5 rounded-full bg-warning ring-2 ring-panel" />}
       </button>
     );

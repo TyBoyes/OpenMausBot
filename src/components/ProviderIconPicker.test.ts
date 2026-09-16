@@ -16,7 +16,8 @@ describe("provider icon upload", () => {
     await expect(providerIconFromFile(new File(["<svg/>"] , "unsupported.svg", { type: "image/svg+xml" }), vi.fn()))
       .rejects.toThrow("PNG, JPEG, or WebP");
     const decode = vi.fn(async () => { throw new Error("OpenMausBot could not decode that image."); });
-    await expect(providerIconFromFile(new File(["not a png"], "invalid.png", { type: "image/png" }), decode))
-      .rejects.toThrow(/incomplete|file type|decode/);
+    await expect(providerIconFromFile(new File([png], "invalid.png", { type: "image/png" }), decode))
+      .rejects.toThrow("could not decode");
+    expect(decode).toHaveBeenCalledOnce();
   });
 });
